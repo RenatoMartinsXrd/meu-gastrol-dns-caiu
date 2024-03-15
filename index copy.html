@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 
 <head>
 	<meta charset="UTF-8">
@@ -38,19 +38,17 @@
 					 alt=""
 					 id="img">
 		</div>
-
-		<div id="customAlert"
-				 class="hidden">
-			<div class="customAlertContent">
-				<img src="img/4.jpeg"
-						 alt="Alert Image">
-			</div>
-			<h2 style="color:black;padding: 20px">AHHHHHHH SOU O SUPER GASTROL SAYADIN INSTINTO SUPERIOR COLOSSAL FORMA FINAL
-				<br>
-				EU NAO LIGO PRA NADA AGORA POSSO TOMAR ALCOOL DE FORMA SEGURA
-			</h2>
-		</div>
 	</section>
+
+	<!-- <div id="customAlert"
+			 class="hidden">
+		<div class="customAlertContent">
+			<img src="img/1.jpg"
+					 alt="Alert Image">
+			<p>Seu texto personalizado aqui</p>
+			<button>Continuar para o proximo nivel</button>
+		</div>
+	</div> -->
 	<script>
 		var mugHeight;
 		var beerHeight;
@@ -68,10 +66,14 @@
 			document.getElementById('percent-filled').innerHTML = 'Nível de Gastrol no Sangue ' + roundedPercent + '%';
 		}
 
-		function scrollIntoBeer() {
-			document.querySelector('.container-beer').scrollIntoView({
-				behavior: 'smooth'
-			});
+		function showCustomAlert() {
+			var customAlert = document.getElementById('customAlert');
+			customAlert.classList.remove('hidden');
+		}
+
+		function removeShowCustomAlert() {
+			var customAlert = document.getElementById('customAlert');
+			customAlert.classList.add('hidden');
 		}
 
 		document.getElementById('handle').addEventListener('mouseenter', startAnimation);
@@ -109,28 +111,18 @@
 			document.getElementById('img').src = imageSrc;
 		}
 
-		function showCustomAlert() {
-			var customAlert = document.getElementById('customAlert');
-			customAlert.classList.remove('hidden');
-			document.getElementById('percent-filled').innerHTML = 'Nível de Gastrol no Sangue ' + 100 + '%';
-		}
-
 		function animate() {
 			animationPaused = false; // Define a animação como não pausada
 			animationInterval = setInterval(function () {
 				if (percentFilled >= 20 && percentFilled <= 25) {
 					document.getElementById('title').innerText = 'Agora me tornei o Super Gastrol Pagodeiro, sim eu existo';
-					swapImageWithDelay('img/2.jpg'); // Troca a imagem com delay de 1 segundo
-				} else if (percentFilled > 50 && percentFilled < 60) {
-					document.getElementById('title').innerText = 'Gastrol é como música para os meus ouvidos, vamos começar...';
-					swapImageWithDelay('img/3.jpg');
-				} else if (percentFilled > 70 && percentFilled <= 87) {
-					document.getElementById('title').innerText = 'Sou o super gastrol sayadin 1, uso terno e tenho classe';
-					swapImageWithDelay('img/5.png');
-
-					setTimeout(() => {
-						showCustomAlert();
-					}, 4000);
+					swapImageWithDelay('img/2.jpg', 1000); // Troca a imagem com delay de 1 segundo
+				} else if (percentFilled > 50 && percentFilled <= 60) {
+					document.getElementById('title').innerText = 'Gastrol é como música para os meus ouvidos';
+					swapImageWithDelay('img/3.jpg', 1000);
+				} else if (percentFilled > 80 && percentFilled <= 90) {
+					document.getElementById('title').innerText = 'AHHHHHHH SOU O SUPER INSTINTO SUPERIOR GASTROL SAYADIN COLOSSAL';
+					swapImageWithDelay('img/4.jpeg', 1000);
 				}
 				getHeights(); // Atualiza a porcentagem em tempo real
 			}, 100); // Intervalo de atualização em milissegundos
